@@ -1,85 +1,43 @@
-const triviaContainer = document.getElementById('trivia');
-const resultsContainer = document.getElementById('results');
-const submitButton = document.getElementById('button');
-
-function myTrivia(){}
 
 
 
-function showAnswers(){}
 
-submitButton.addEventListener('click', showAnswers);
-
-const questions = [
-
-    {
-        question: "What is the most electrifying move in sports entertainment history?",
-
-        answers: {
-            a: "The Stunner",
-            b: "German Suplex",
-            c: "The Peoples Elbow",
-        },
-        correctAnswer: "c"
-    },
-
-    {
-
-        question: "Who utilized Stone Cold Stunner move?",
-
-        answers: {
-            a: "Stone Cold Steve Austin",
-            b: "The Rock",
-            c: "Kurt Angle",
-        },
-        correctAnswer: "a"
-    },
-    {
-        question: "Who has the longest Wrestlemania win streak?",
-
-        answers: {
-            a: "Sean Michaels",
-            b: "Chris Jericho",
-            c: "The Undertaker",
-
-        },
-        correctAnswer: "c"
-    },
-    {
-        question: "What does WWE stand for?",
-        answers: {
-            a: "World War Everyone",
-            b: "World Wrestling Entertainment",
-            c: "War Will Eradicate",
-        },
-        correctAnswer: "b"
-        }
+const startGame = ("startGame").on('click', function() {
     
 
-
-];
-
-
-function myTrivia(){
-    
-    const output = [];
-
-    questions.forEach(
-        (currentQ, Qnumber) => {
-
-            const answers = [];
-
-            for(letter in currentQ.answers){
-                answers.push(
-                    <label>
-                        <input type="radio" name="currentQ" value="letter"></input>
-                        {letter}
-                        {currentQ.answers[letter]}
-                    </label>
-                );
-            }
-        }
-    )
-}
+});
 
 
+
+
+const questions = [{
+    question: "Who dropped The Peoples Elbow on their opponent?",
+    answer: ["Stone Cold Steve Austin", "The Rock", "Kurt Angle"],
+    name: "Elbow",
+    correct: "The Rock",
+    divClass: "rock",
+},
+{
+    question: "Stone Cold Steve Austin's special move was?",
+    answer: ["Rock Bottom", "Pedigree", "Stone Cold Stunner",],
+    name: "stunner",
+    correct: "Stone Cold Stunner",
+    divClass: "stunner",
+},
+{
+    question: "What does WWE stand for?",
+    answer: ["World War Everyone", "World Wrestling Entertainment", "War Will Eradicate",],
+    name: "wwe",
+    correct: "World Wrestling Entertainment",
+    divClass: "wwe",
+},
+]
+
+const onetwothreefour = ["first", "second", "third", "fourth"];
+
+const timer = setInterval(function(){
+    document.getElementById("thetime").value = 30 - timeleft;
+    timeleft -= 1;
+    if(timeleft <= 0)
+      clearInterval(downloadTimer);
+  }, 1000);

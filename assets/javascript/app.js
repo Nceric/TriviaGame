@@ -5,7 +5,7 @@
 const startGame = ("startGame").on('click', function() {
     
 
-});
+
 
 
 
@@ -33,11 +33,20 @@ const questions = [{
 },
 ]
 
-const onetwothreefour = ["first", "second", "third", "fourth"];
+const timeLeft = 30;
+const time = document.getElementById('timer');
+const timerId = setInterval(countdown, 1000);
 
-const timer = setInterval(function(){
-    document.getElementById("thetime").value = 30 - timeleft;
-    timeleft -= 1;
-    if(timeleft <= 0)
-      clearInterval(downloadTimer);
-  }, 1000);
+function countdown() {
+    if (timeLeft == -1) {
+        clearTimeout(timerId);
+        doSomething();
+    } else {
+        time.innerHTML = timeLeft + ' seconds remaining';
+        timeLeft--;
+    }
+}
+
+function TimeUp() {
+    alert("Time is up!");
+}

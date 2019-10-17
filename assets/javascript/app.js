@@ -1,52 +1,49 @@
 
-
-
-
-const startGame = ("startGame").on('click', function() {
+window.onload = function() {
+    formEl.style.display = 'none';
+    };
+    const formEl = document.querySelector("#formEl");
+    const start = document.querySelector("#start");
+    start.addEventListener("click", function(){
+    start.style.display = "none";
+    formEl.style.display = "block";
+    onTimer();
+    });
     
-
-
-
-
-
-
-const questions = [{
-    question: "Who dropped The Peoples Elbow on their opponent?",
-    answer: ["Stone Cold Steve Austin", "The Rock", "Kurt Angle"],
-    name: "Elbow",
-    correct: "The Rock",
-    divClass: "rock",
-},
-{
-    question: "Stone Cold Steve Austin's special move was?",
-    answer: ["Rock Bottom", "Pedigree", "Stone Cold Stunner",],
-    name: "stunner",
-    correct: "Stone Cold Stunner",
-    divClass: "stunner",
-},
-{
-    question: "What does WWE stand for?",
-    answer: ["World War Everyone", "World Wrestling Entertainment", "War Will Eradicate",],
-    name: "wwe",
-    correct: "World Wrestling Entertainment",
-    divClass: "wwe",
-},
-]
-
-const timeLeft = 30;
-const time = document.getElementById('timer');
-const timerId = setInterval(countdown, 1000);
-
-function countdown() {
-    if (timeLeft == -1) {
-        clearTimeout(timerId);
-        doSomething();
-    } else {
-        time.innerHTML = timeLeft + ' seconds remaining';
-        timeLeft--;
+    i = 30;
+    function onTimer(){
+    document.querySelector("#time").innerHTML = "<h3>You have " + i + " seconds to complete.</h3>";
+    i--;
+    
+    if(i < 0) {
+    document.querySelector("#time").innerHTML = "<h3>You have run out of time!</h3";
+    formEl.style.display = 'none';
+    }else {
+    setTimeout(onTimer, 1000);
     }
-}
-
-function TimeUp() {
-    alert("Time is up!");
-}
+    }
+    
+    function questions() {
+    let total = 4;
+    let score = 0;
+    
+    let q1 = document.forms["wwetrivia"]["therock"].value;
+    let q2 = document.forms["wwetrivia"]["austin"].value;
+    let q3 = document.forms["wwetrivia"]["jericho"].value;
+    let q4 = document.forms["wwetrivia"]["wwf"].value;
+    
+    let result = document.querySelector("#result");
+    
+    let answers = ["c", "a", "a", "a"];
+    for(let i = 1; i <= total; i++) {
+    if(eval('q'+i) == answers[i-1]) {
+        score++;
+    } 
+    }
+    
+    result.textContent = "You scored " + score +  " out of " + total + ".";
+    document.querySelector("#time").style.display = "none";
+    formEl.style.display = 'none';
+    return false;
+    }
+    
